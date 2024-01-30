@@ -6,7 +6,7 @@
 
 ### **Étape 1: Configuration de l'Infrastructure**
 
-- Mettez en place l'infrastructure nécessaire pour le déploiement. Vous pouvez utiliser des services cloud gratuits de votre choix.
+- Mettez en place l'infrastructure nécessaire pour le déploiement. Vous pouvez utiliser des services cloud gratuits de votre choix. DOCKER est obligatoire pour cette étape.
 
 **Note:** Veuillez héberger le serveur à une URL accessible et nous fournir l'URL pour accéder à celui-ci.
 
@@ -17,6 +17,7 @@
   - Installation des dépendances Node.js.
   - Déploiement sur le serveur de développement après chaque modification du code source.
   - Faire en sorte que l’application redémarre automatiquement en cas de problème
+  - S'assurer que l'application est accessible et répond aux requêtes une fois déployée. Cela pourrait être un simple test de ping ou une vérification que l'URL principale renvoie un code de statut 200.
 
 ### **Étape 3: Gestion des Secrets et de la Sécurité**
 
@@ -26,24 +27,20 @@
 
 ### **Étape 4: Tests Unitaires pour le Déploiement**
 
-- Écrivez des tests unitaires pour valider le bon fonctionnement de l'application lors de son déploiement. Cela devrait inclure, mais ne pas se limiter à :
-  1. **Tests de Connexion à la Base de Données :** Assurez-vous que l'application peut établir une connexion à MongoDB une fois déployée.
-  2. **Tests de Disponibilité :** S'assurer que l'application est accessible et répond aux requêtes une fois déployée. Cela pourrait être un simple test de ping ou une vérification que l'URL principale renvoie un code de statut 200.
-- **[Live Coding/Questions]** Intégrez ces tests dans le pipeline CI/CD et démontrez leur fonctionnement.
+- Écrivez des tests unitaires pour valider le bon fonctionnement de l'application avant son déploiement et intégrez ces tests dans le pipeline CI/CD.
 
 # ETAPES BONUS EN LIVE CODING
 
-### **Surveillance et Gestion des Erreurs**
+### **Gestion des Erreurs**
 
 - Configurez la gestion des erreurs en utilisant Sentry pour capturer et gérer les erreurs de l'application.
-- Trouvez un moyen de monitoring et de visualisation des métriques. Le but étant de pouvoir facilement repérer qui s’est connecté suite à une intrusion par exemple.
-- **[Discussion]** Parlez de vos stratégies pour la surveillance et la mise à l'échelle automatique.
 
 **Note:** Veuillez nous fournir les identifiants pour accéder à Sentry.
 
-### **Gestion des logs**
+### **Gestion des logs et surveillance**
 
-- Trouver un moyen de loger efficacement les logs de l'application afin de pouvoir débugger facilement en cas de problème ou en cas d’intrusion.
+- Trouvez un moyen de monitoring et de visualisation des métriques. Le but étant de pouvoir facilement repérer qui s’est connecté suite à une intrusion par exemple.
+- **[Discussion]** Parlez de vos stratégies pour la surveillance et la mise à l'échelle automatique.
 
 ### **Mise à l’échelle automatique**
 

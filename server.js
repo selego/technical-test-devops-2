@@ -19,7 +19,7 @@ app.get("/secret", (req, res) => {
   res.sendStatus(200);
 });
 
-// ! Don't fix and test these routes
+// ! Don't fix and test these routes below
 app.get("/bug", (req, res) => {
   console.log(a.b);
   res.sendStatus(200);
