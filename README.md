@@ -49,4 +49,4 @@
 ### PS :
 
 L’usage de méthodes de génération de code automatique est autorisé voire même fortement recommandée afin de gagner du temps.
-Assurez-vous d'ajouter **@naustra** et **@FlawaCLV** en tant qu'admin sur le dépôt GitHub associé et également de nous informer de l'endroit où l'infrastructure est hébergée.
+Assurez-vous d'ajouter **@naustra** en tant qu'admin sur le dépôt GitHub associé et également de nous informer de l'endroit où l'infrastructure est hébergée.
