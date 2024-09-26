@@ -1,0 +1,52 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Start workflow on change in the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Node version used
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Docker image
+      run: docker build -t <dockerhub-username>/technical-test-devops:latest .
+
+    - name: Login to Docker Hub
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Push Docker image to Docker Hub
+      run: docker push <dockerhub-username>/technical-test-devops:latest
+
+    - name: Deploy to Render
+      env:
+        RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      run: |
+        curl -X POST "https://api.render.com/deploy/svc-XXXXXXXXXX" \
+        -H "Authorization: Bearer $RENDER_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{"branch": "main"}'
+      
+    - name: Health Check
+      run: |
+        sleep 30  # Wait for the app to start
+        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" https://api-test-devops.onrender.com)
+        if [ "$RESPONSE" -ne 200 ]; then
+          echo "Application is not accessible. Received status code: $RESPONSE"
+          exit 1
+        fi

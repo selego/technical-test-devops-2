@@ -1,8 +1,14 @@
-const express = require("express");
+//import express from 'express';
+
+const express = require('express');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 const PORT = 3000;
-const SECRET_ENV = "secret";
+const SECRET_ENV = process.env.SECRET_ENV;
+const SECRET_API_KEY = process.env.SECRET_API_KEY;
 
 app.get("/", (req, res) => {
   res.send("Hello from the the développeur star ⭐");
@@ -14,9 +20,12 @@ app.get("/health", (req, res) => {
 });
 
 app.get("/secret", (req, res) => {
-  console.log("SECRET_ENV", SECRET_ENV);
-  if (req?.body?.test) res.sendStatus(201);
-  res.sendStatus(200);
+  const apiKey = req.headers['api-key'];
+  if (apiKey === SECRET_API_KEY) {
+    res.send(`Secret value is: ${SECRET_ENV}`);
+  } else {
+    res.sendStatus(403); // Forbidden
+  }
 });
 
 // ! Don't fix and test these routes below
@@ -42,3 +51,6 @@ app.get("/error", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+//Export for integration test
+module.exports = { app };
