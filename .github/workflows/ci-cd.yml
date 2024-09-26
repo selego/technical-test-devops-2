@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Build Docker image
-      run: docker build -t <dockerhub-username>/technical-test-devops:latest .
+      run: docker build -t nazakkour/technical-test-devops:latest .
 
     - name: Login to Docker Hub
       env:
@@ -31,7 +31,7 @@ jobs:
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
     - name: Push Docker image to Docker Hub
-      run: docker push <dockerhub-username>/technical-test-devops:latest
+      run: docker push nazakkour/technical-test-devops:latest
 
     - name: Deploy to Render
       env:
