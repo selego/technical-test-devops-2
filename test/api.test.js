@@ -1,12 +1,17 @@
 // test/server.test.js
 const request = require('supertest');
-const { app } = require('../server'); // Importer l'application depuis server.js
+const { app, server } = require('../server'); // Importer l'application depuis server.js
 
 const dotenv = require('dotenv');
 
 dotenv.config();
 
 describe('API Routes', () => {
+    afterAll(async () => {
+        // Fermer le serveur après les tests
+        await new Promise(resolve => server.close(resolve));
+    });
+
     it('should return a 200 status for the health route', async () => {
         const response = await request(app).get('/health');
         expect(response.status).toBe(200);

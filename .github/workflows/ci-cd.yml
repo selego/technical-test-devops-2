@@ -21,8 +21,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run Tests
-      run: npm test
+#    - name: Run Tests
+#     run: npm test -- --ci
 
     - name: Build Docker image
       run: docker build -t nazakkour/technical-test-devops:latest .

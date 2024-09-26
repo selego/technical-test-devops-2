@@ -48,9 +48,9 @@ app.get("/error", (req, res) => {
   throw new Error("This is a deliberate error!");
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
 //Export for integration test
-module.exports = { app };
+module.exports = { app, server };
