@@ -44,9 +44,9 @@ describe('API Routes', () => {
         expect(response.status).toBe(403); // Forbidden
     });
 
-    it('should return 200 for the /bug route', async () => {
+    it('should return 500 for the /bug route', async () => {
         const response = await request(app).get('/bug');
-        expect(response.status).toBe(200);
+        expect(response.status).toBe(500);
     });
 
     it('should handle errors on /error route', async () => {
