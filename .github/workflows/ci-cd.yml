@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # Start workflow on change in the main branch
+      - test-devops-nabil-1  # Start workflow on change in the test-devops-nabil-1
 
 jobs:
   build:
