@@ -39,5 +39,8 @@ describe('API Routes', () => {
         expect(response.status).toBe(500); // Internal Server Error
     });
 
+    afterAll(async () => {
+        await new Promise(resolve => server.close(resolve)); // Fermer le serveur
+    });
 
 });
