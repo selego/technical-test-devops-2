@@ -35,4 +35,8 @@ describe('API Routes', () => {
         expect(response.status).toBe(500); // Internal Server Error
     });
 
+    it('should crash the app for /crash_app route', async () => {
+        const response = await request(app).get('/crash_app');
+        expect(response.status).toBe(200); // Adjust according to your crash handling
+    });
 });
