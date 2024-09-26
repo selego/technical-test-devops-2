@@ -7,17 +7,23 @@
 ### **Étape 1: Configuration de l'Infrastructure**
 
 - Mettez en place l'infrastructure nécessaire pour le déploiement. Vous pouvez utiliser des services cloud gratuits de votre choix. DOCKER est obligatoire pour cette étape.
+
+  
 J'ai choisi render pour héberger et l'URL est https://api-test-devops.onrender.com .
+
 **Note:** Veuillez héberger le serveur à une URL accessible et nous fournir l'URL pour accéder à celui-ci.
 
 ### **Étape 2: Pipeline CI/CD avec GitHub Actions**
 
 - Configurez un pipeline de déploiement continu (CI/CD) en utilisant GitHub Actions.
+  
 - Automatisez les étapes suivantes dans le pipeline :
-  - Installation des dépendances Node.js.
+  - Installation des dépendances Node.js. 
   - Déploiement sur le serveur de développement après chaque modification du code source.
   - Faire en sorte que l’application redémarre automatiquement en cas de problème
   - S'assurer que l'application est accessible et répond aux requêtes une fois déployée. Cela pourrait être un simple test de ping ou une vérification que l'URL principale renvoie un code de statut 200.
+
+J'ai mis en plae un fichier ci-cd.yml dans .github/workflows qui permet, à chaque push vers ma branche test-devops-nabil-1, de build l'image, push le container sur le docker hub repo et déployer sur le webservice render. L'application redémarre en cas de crash, il suffit de tester la route crash_app pour s'en assurer. Toutes les autres routes fonctionnent correctement.
 
 ### **Étape 3: Gestion des Secrets et de la Sécurité**
 
@@ -25,9 +31,12 @@ J'ai choisi render pour héberger et l'URL est https://api-test-devops.onrender.
 - Protégez l'accès à la route `/secret`.
 - **[Live Coding/Questions]** Discutez et mettez en œuvre des mesures de sécurité avancées pour la route /secret.
 
+J'ai mis en place des variables d'environnement secret sur render et sur le github afin d'ajouter de la sécurité. La route /secret affiche donc forbidden en cas d'acès sauf si on met la clé d'API secrète correspondante, la clé en question est également en variable d'environnement et est : selegoapi . Vous pouvez tester via la commande curl -H "api-key: selegoapi" https://api-test-devops.onrender.com/secret
+
 ### **Étape 4: Tests Unitaires pour le Déploiement**
 
 - Écrivez des tests unitaires pour valider le bon fonctionnement de l'application avant son déploiement et intégrez ces tests dans le pipeline CI/CD.
+
 
 # ETAPES BONUS EN LIVE CODING
 
