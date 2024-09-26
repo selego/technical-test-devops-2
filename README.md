@@ -37,6 +37,7 @@ J'ai mis en place des variables d'environnement secret sur render et sur le gith
 
 - Écrivez des tests unitaires pour valider le bon fonctionnement de l'application avant son déploiement et intégrez ces tests dans le pipeline CI/CD.
 
+J'ai mis en place des tests d'intégrations, le ci-cd.yaml procede au test avant de construire l'image pour éviter qu'une image soit publiée si les tests d'intégration ne sont pas validés . Le fichier s'appelle api.test.js. 
 
 # ETAPES BONUS EN LIVE CODING
 
