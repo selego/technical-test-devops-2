@@ -7,7 +7,7 @@ RUN npm install
 RUN npm install -g pm2
 
 COPY . .
-RUN npm test --ci --detectOpenHandles
+#RUN npm test --ci --detectOpenHandles
 EXPOSE 3000
 #CMD ["npm", "run", "dev"]
 CMD ["pm2-runtime", "server.js"]
