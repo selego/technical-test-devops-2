@@ -7,7 +7,7 @@
 ### **Étape 1: Configuration de l'Infrastructure**
 
 - Mettez en place l'infrastructure nécessaire pour le déploiement. Vous pouvez utiliser des services cloud gratuits de votre choix. DOCKER est obligatoire pour cette étape.
-
+J'ai choisi render pour héberger et l'URL est https://api-test-devops.onrender.com .
 **Note:** Veuillez héberger le serveur à une URL accessible et nous fournir l'URL pour accéder à celui-ci.
 
 ### **Étape 2: Pipeline CI/CD avec GitHub Actions**
